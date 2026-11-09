@@ -1,0 +1,19 @@
+{
+  "name": "gladys-text2speak",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Gladys Assistant external integration for the Text2Speak multi-room TTS API",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test",
+    "check:manifest": "node --input-type=module -e \"import fs from 'node:fs'; const m=JSON.parse(fs.readFileSync('gladys-assistant-integration.json','utf8')); if(m.manifest_version!==1 || m.type!=='provider' || !m.scene_actions?.some(a=>a.key==='tts_speak')) process.exit(1); console.log('Manifest OK');\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@gladysassistant/integration-sdk": "0.12.0"
+  }
+}

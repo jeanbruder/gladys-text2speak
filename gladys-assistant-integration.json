@@ -1,0 +1,117 @@
+{
+  "manifest_version": 1,
+  "type": "provider",
+  "name": "Text2Speak",
+  "description": {
+    "en": "Send variable voice announcements to Text2Speak multi-room TTS.",
+    "fr": "Envoyez des annonces vocales variables vers Text2Speak multi-pièces."
+  },
+  "version": "1.0.0",
+  "docker_image": "ghcr.io/jeanbruder/gladys-text2speak:1.0.0",
+  "gladys_version": ">=5.1.0",
+  "categories": ["notifications", "multimedia"],
+  "transports": ["local"],
+  "config_schema": [
+    {
+      "key": "base_url",
+      "type": "string",
+      "label": {
+        "en": "Text2Speak API base URL",
+        "fr": "Adresse de base de l'API Text2Speak"
+      },
+      "placeholder": {
+        "en": "http://192.168.1.20:1337",
+        "fr": "http://192.168.1.20:1337"
+      },
+      "required": true
+    },
+    {
+      "key": "timeout_seconds",
+      "type": "number",
+      "label": {
+        "en": "HTTP timeout (seconds)",
+        "fr": "Délai d'attente HTTP (secondes)"
+      },
+      "default": 5,
+      "min": 1,
+      "max": 30
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_connection",
+      "label": {
+        "en": "Test Text2Speak connection",
+        "fr": "Tester la connexion Text2Speak"
+      },
+      "timeout_seconds": 15
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "tts_speak",
+      "label": {
+        "en": "Speak a message with Text2Speak",
+        "fr": "Diffuser un message vocal avec Text2Speak"
+      },
+      "timeout_seconds": 20,
+      "fields": [
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Message to speak (Gladys variables supported)",
+            "fr": "Message à prononcer (variables Gladys acceptées)"
+          },
+          "placeholder": {
+            "en": "The temperature is {{ ... }} degrees",
+            "fr": "La température est de {{ ... }} degrés"
+          },
+          "required": true
+        },
+        {
+          "key": "priority",
+          "type": "number",
+          "label": {
+            "en": "Priority (0 = highest, 9 = lowest)",
+            "fr": "Priorité (0 = maximale, 9 = minimale)"
+          },
+          "default": 5,
+          "min": 0,
+          "max": 9
+        },
+        {
+          "key": "targets",
+          "type": "string",
+          "label": {
+            "en": "Rooms / zones (comma-separated; empty = Text2Speak default)",
+            "fr": "Pièces / zones (séparées par des virgules ; vide = cible par défaut Text2Speak)"
+          },
+          "placeholder": {
+            "en": "living_room, kitchen, whole_house",
+            "fr": "salon, cuisine, maison"
+          },
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "key": "job_id",
+          "type": "string",
+          "label": {
+            "en": "Text2Speak job ID",
+            "fr": "Identifiant du message Text2Speak"
+          }
+        },
+        {
+          "key": "queue_position",
+          "type": "number",
+          "label": {
+            "en": "Queue position",
+            "fr": "Position dans la file d'attente"
+          }
+        }
+      ]
+    }
+  ]
+}
