@@ -1,6 +1,6 @@
 {
   "name": "gladys-text2speak",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "description": "Gladys Assistant external integration for the Text2Speak multi-room TTS API",
   "type": "module",
