@@ -2,6 +2,7 @@
   "manifest_version": 1,
   "type": "provider",
   "name": "Text2Speak",
+  "cover_image": "https://raw.githubusercontent.com/jeanbruder/gladys-text2speak/main/cover.jpg",
   "description": {
     "en": "Send variable voice announcements to Text2Speak multi-room TTS.",
     "fr": "Envoyez des annonces vocales variables vers Text2Speak multi-pièces."
