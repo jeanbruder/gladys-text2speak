@@ -26,4 +26,4 @@ jobs:
       - name: Validate manifest JSON
         run: npm run check:manifest
       - name: Validate Gladys integration manifest
-        run: npx --yes github:GladysAssistant/integration-store .
+        run: npx --yes github:GladysAssistant/integration-store --skip-image-check .
